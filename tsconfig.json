@@ -1,15 +1,22 @@
 {
   "compilerOptions": {
     "module": "commonjs",
-    "target": "es5",
+    "target": "es2017",
     "strict": true,
     "noImplicitAny": false,
     "sourceMap": false,
     "baseUrl": "./",
+    "outDir": "./dist",
+    "skipLibCheck": true,
     "paths": {
-      "@/*": [
-        "app/*"
-      ]
+      "@/*": ["src/*"]
+    }
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".ts"]
+      }
     }
   },
   "exclude": [
