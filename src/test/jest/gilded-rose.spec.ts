@@ -1,5 +1,5 @@
-import Shop from '../../app/gilded-rose';
-import Item from '../../app/item';
+import Shop from '../../modules/gilded-rose';
+import Item from '../../modules/item';
 import axios from 'axios';
 
 jest.mock('axios');
