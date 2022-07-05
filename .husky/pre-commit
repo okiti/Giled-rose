@@ -1,4 +1,10 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
+echo "Checking linting errors on commit message"
+npx --no -- commitlint --edit "${1}"
 
+echo "Checking for linting errors in code base"
+npm run lint
+
+echo "Running tests"
 npm run test:jest
