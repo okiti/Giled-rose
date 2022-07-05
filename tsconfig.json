@@ -5,6 +5,7 @@
     "strict": true,
     "noImplicitAny": false,
     "sourceMap": false,
+    "esModuleInterop": true,
     "baseUrl": "./",
     "outDir": "./dist",
     "skipLibCheck": true,
