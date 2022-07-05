@@ -1,5 +1,9 @@
 import Shop from '../../app/gilded-rose';
 import Item from '../../app/item';
+import axios from 'axios';
+
+jest.mock('axios');
+const mockedAxios = axios as jest.Mocked<typeof axios>;
 
 describe('Gilded Rose', () => {
   it('Should return the expected result', () => {
@@ -89,5 +93,14 @@ describe('Backstage passes', () => {
     const items = gildedRose.updateQuality();
 
     expect(items).toStrictEqual(expectedResult);
+  });
+});
+
+describe('API Call', () => {
+  it("Should return a status of 200", async () => {
+    mockedAxios.get.mockResolvedValue({ status: 200, data: { "answer": "no", "forced": false, "image": "https://yesno.wtf/assets/no/9-dc99c0e3c066b28d3a12262692cd5432.gif" } });
+
+    const ans = await axios.get('https://yesno.wtf/api');
+    expect(ans.status).toEqual(200);
   });
 });
