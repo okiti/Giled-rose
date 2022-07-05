@@ -1,10 +1,27 @@
 import Item from './item';
 
+type ShopItem = {
+  name: string;
+  quality: number;
+  sellIn: number;
+};
 export default class GildedRose {
   items: Array<Item>;
 
   constructor(items = [] as Array<Item>) {
     this.items = items;
+  }
+
+  calculateQualityDifferenceForNormalItem(item: ShopItem) {
+    const { quality, sellIn } = item;
+
+    const noMoreDaysToSell = sellIn <= 0;
+    const qualityIsGreaterThanZero = quality > 0;
+
+    if (qualityIsGreaterThanZero && noMoreDaysToSell) return -2;
+    if (qualityIsGreaterThanZero) return -1;
+
+    return 0;
   }
 
   updateQuality() {
