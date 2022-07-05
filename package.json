@@ -4,6 +4,7 @@
   "description": "Gilded Rose kata in TypeScript",
   "scripts": {
     "build": "rimraf dist && tsc",
+    "start": "ts-node src/index.ts",
     "precompile": "rimraf app/**/*.js test/**/*.js",
     "compile": "tsc",
     "pretest": "rimraf app/**/*.js test/**/*.js",
