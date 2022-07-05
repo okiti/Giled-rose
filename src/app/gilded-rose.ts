@@ -40,6 +40,22 @@ export default class GildedRose {
     return !isSulfuras ? -1 : 0;
   }
 
+  calculateQualityDifference(item: ShopItem): number {
+    const { name, quality } = item;
+
+    const isAgedBrie = name === 'Aged Brie';
+    const isSulfuras = name === 'Sulfuras, Hand of Ragnaros';
+    const isBackstagePasses = name === 'Backstage passes to a TAFKAL80ETC concert';
+    const isQualityLessThan50 = quality < 50;
+    const isNormalItem = !isAgedBrie && !isBackstagePasses && !isSulfuras;
+
+    if (isNormalItem) return this.calculateQualityDifferenceForNormalItem(item);
+    if (isBackstagePasses) return this.calculateQualityDifferenceForBackstagePasses(item);
+    if (isAgedBrie && isQualityLessThan50) return +1;
+
+    return 0;
+  }
+
   updateQuality() {
     for (let i = 0; i < this.items.length; i += 1) {
       if (this.items[i].name !== 'Aged Brie' && this.items[i].name !== 'Backstage passes to a TAFKAL80ETC concert') {
