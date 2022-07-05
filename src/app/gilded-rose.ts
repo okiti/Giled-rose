@@ -34,6 +34,12 @@ export default class GildedRose {
     return +1;
   }
 
+  calculateSellinDifference(item: ShopItem): number {
+    const { name } = item;
+    const isSulfuras = name === 'Sulfuras, Hand of Ragnaros';
+    return !isSulfuras ? -1 : 0;
+  }
+
   updateQuality() {
     for (let i = 0; i < this.items.length; i += 1) {
       if (this.items[i].name !== 'Aged Brie' && this.items[i].name !== 'Backstage passes to a TAFKAL80ETC concert') {
