@@ -12,7 +12,7 @@ export default class GildedRose {
     this.items = items;
   }
 
-  calculateQualityDifferenceForNormalItem(item: ShopItem) {
+  calculateQualityDifferenceForNormalItem(item: ShopItem): number {
     const { quality, sellIn } = item;
 
     const noMoreDaysToSell = sellIn <= 0;
@@ -22,6 +22,16 @@ export default class GildedRose {
     if (qualityIsGreaterThanZero) return -1;
 
     return 0;
+  }
+
+  calculateQualityDifferenceForBackstagePasses(item: ShopItem): number {
+    const { sellIn, quality } = item;
+
+    if (sellIn < 0) return -quality;
+    if (sellIn <= 5) return +3;
+    if (sellIn <= 10) return +2;
+
+    return +1;
   }
 
   updateQuality() {
